@@ -50,12 +50,14 @@ async function onSearchFormSubmit(event) {
       galleryEl.innerHTML = createGalleryCards(response.data.hits);
       loadMoreBtnEl.classList.add('is-hidden');
       lightbox.refresh();
+      scrollPage();
       return;
     }
     // розмітка + кнопка + lightbox
     galleryEl.innerHTML = createGalleryCards(response.data.hits);
     loadMoreBtnEl.classList.remove('is-hidden');
     lightbox.refresh();
+    scrollPage();
   } catch (err) {
     console.log(err);
   }
@@ -83,4 +85,15 @@ async function onLoadMoreBtnClick(event) {
   } catch (err) {
     console.log(err);
   }
+}
+// Прокручування сторінки
+function scrollPage() {
+const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: "smooth",
+});
 }
