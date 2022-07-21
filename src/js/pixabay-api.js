@@ -9,6 +9,7 @@ export class PixabayAPI {
   constructor() {
     this.page = 1;
     this.q = null;
+    this.per_page = 40;
   }
 
   getPhotosByQuery() {
@@ -20,7 +21,7 @@ export class PixabayAPI {
         orientation: 'horizontal',
         safesearch: true,
         page: this.page,
-        per_page: 10,
+        per_page: this.per_page,
       },
     });
   }
