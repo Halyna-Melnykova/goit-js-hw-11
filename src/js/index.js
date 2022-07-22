@@ -82,6 +82,9 @@ async function onLoadMoreBtnClick(event) {
       'beforeend',
       createGalleryCards(response.data.hits)
     );
+    lightbox.refresh();
+    scrollPage();
+
   } catch (err) {
     console.log(err);
   }
