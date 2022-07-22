@@ -76,6 +76,9 @@ async function onSearchFormSubmit(event) {
     
       galleryEl.innerHTML = createGalleryCards(response.data.hits);
       lightbox.refresh();
+
+      observer.observe(document.querySelector('.target-element'));
+
     } catch (err) {
       console.log(err);
     }
